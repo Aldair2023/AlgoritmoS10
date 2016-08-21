@@ -5,6 +5,9 @@
  */
 package algoritmosecuencial;
 
+import com.sun.scenario.effect.AbstractShadow;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aldair
@@ -17,7 +20,7 @@ public class Ejercicio10 extends javax.swing.JFrame {
     public Ejercicio10() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+        txtFotos.requestFocusInWindow();
         
     }
 
@@ -75,17 +78,33 @@ public class Ejercicio10 extends javax.swing.JFrame {
         jLabel6.setText("Procesador De Datos");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
         jPanel1.add(txtTpagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 160, 30));
+
+        txtFotos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFotosKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 130, 30));
         jPanel1.add(txtIVA, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 180, 30));
 
         jButton2.setBackground(new java.awt.Color(153, 255, 255));
         jButton2.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jButton2.setText("Borrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 283, 90, 40));
 
         jButton3.setBackground(new java.awt.Color(153, 255, 255));
         jButton3.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jButton3.setText("Calcular");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 283, 90, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\aldair\\Desktop\\istock_000019699924small.jpg")); // NOI18N
@@ -110,6 +129,52 @@ public class Ejercicio10 extends javax.swing.JFrame {
         System.exit(0);
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       
+        double fotos, iva, vtotal, res;
+        
+        if(txtFotos.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null,"por favor ingrese la cantidad de fotos a revelar","ERROR",JOptionPane.WARNING_MESSAGE);
+        }else
+        
+        try{    
+        fotos=Double.parseDouble(txtFotos.getText());
+        
+        res=(fotos*1500);
+        iva=(res*0.16);
+        vtotal=(res+iva);
+        
+        
+        txtFotos.setText(""+fotos);
+        txtIVA.setText(""+iva);
+        txtTpagar.setText(""+vtotal);
+        
+        txtFotos.requestFocusInWindow();
+        
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"el valor ingresado en la casilla fotos es incorrecto","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+          txtFotos.setText("");
+        txtIVA.setText("");
+        txtTpagar.setText("");
+        
+        txtFotos.requestFocusInWindow();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtFotosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFotosKeyTyped
+        char c=evt.getKeyChar();
+        
+        if(!Character.isDigit(evt.getKeyChar())&& evt.getKeyChar() != '.'){
+            getToolkit();
+            
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtFotosKeyTyped
 
     /**
      * @param args the command line arguments
