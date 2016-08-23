@@ -77,6 +77,8 @@ public class Ejercicio10 extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 0, 0));
         jLabel6.setText("Procesador De Datos");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
+
+        txtTpagar.setEditable(false);
         jPanel1.add(txtTpagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 160, 30));
 
         txtFotos.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -85,6 +87,8 @@ public class Ejercicio10 extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtFotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 130, 30));
+
+        txtIVA.setEditable(false);
         jPanel1.add(txtIVA, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 180, 30));
 
         jButton2.setBackground(new java.awt.Color(153, 255, 255));
@@ -153,7 +157,7 @@ public class Ejercicio10 extends javax.swing.JFrame {
         txtFotos.requestFocusInWindow();
         
         }
-        catch(Exception e){
+        catch(Exception u){
             JOptionPane.showMessageDialog(null,"el valor ingresado en la casilla fotos es incorrecto","ERROR",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -167,8 +171,6 @@ public class Ejercicio10 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtFotosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFotosKeyTyped
-        char c=evt.getKeyChar();
-        
         if(!Character.isDigit(evt.getKeyChar())&& evt.getKeyChar() != '.'){
             getToolkit();
             
